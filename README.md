@@ -1,39 +1,36 @@
 # A BlogApp with Spring Boot
 
-#### More complex version is here: https://github.com/gtiwari333/spring-boot-web-application-seed
-
 ### Intro
 
 This is a simple micro blogging application where you can post a note/blog with attachments and other can view it.
 
 The default username/passwords are listed on : gt.app.Application.initData, which are:
 
-- system/pass
-- user1/pass
-- user2/pass
+-   system/pass
+-   user1/pass
+-   user2/pass
 
 ### Requirements
 
-- JDK 21+
-- Lombok configured on IDE
-    - http://ganeshtiwaridotcomdotnp.blogspot.com/2016/03/configuring-lombok-on-intellij.html
-    - For eclipse, download the lombok jar, run it, and point to eclipse installation
-- Maven (optional)
-- Docker
+-   JDK 21+
+-   Lombok configured on IDE
+    -   For eclipse, download the lombok jar, run it, and point to eclipse installation
+-   Maven (optional)
+-   Docker
 
 ### How to Run
 
-- Clone/Download and Import project into your IDE, compile and run Application.java
-- Update run configuration to run maven goal `wro4j:run` Before Launch. It should be after 'Build'
-  OR
+-   Clone/Download and Import project into your IDE, compile and run Application.java
+-   Update run configuration to run maven goal `wro4j:run` Before Launch. It should be after 'Build'
+    OR
 
-- ./mvnw compile spring-boot:run //if you don't have maven installed in your PC
+-   ./mvnw compile spring-boot:run //if you don't have maven installed in your PC
 
 OR
 
-- ./mvnw compile spring-boot:run //if you have maven installed in your PC
+-   ./mvnw compile spring-boot:run //if you have maven installed in your PC
 
-And open   `http://localhost:8080` on your browser
+And open `http://localhost:8080` on your browser
 
 Optionally, you can start the docker containers yourself using:
 
@@ -44,7 +41,8 @@ Or
 `docker-compose --profile all up` to start both mailHog and mysql (if you want to use 'docker' or 'prod' profile)
 
 `sudo chmod 666 /var/run/docker.sock` to fix following error
-``` 
+
+```
 org.springframework.boot.docker.compose.core.ProcessExitException: 'docker version --format {{.Client.Version}}' failed with exit code 1.
 
 Stdout:
@@ -52,7 +50,7 @@ Stdout:
 
 
 Stderr:
-Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: 
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock:
     Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
 ```
 
@@ -87,12 +85,12 @@ Perform scan:
 
 View Reports in SonarQube web ui:
 
-- visit http://localhost:9000
-- default login and password are `admin`, you will be asked to change password after logging in with default
-  username/password
-- (optional) change sonarqube admin password without logging
-  in: `curl -u admin:admin -X POST "http://localhost:9000/api/users/change_password?login=admin&previousPassword=admin&password=NEW_PASSWORD"`
-- if you change the password, make sure the update `-Dsonar.password=admin` when you run sonarqube next time
+-   visit http://localhost:9000
+-   default login and password are `admin`, you will be asked to change password after logging in with default
+    username/password
+-   (optional) change sonarqube admin password without logging
+    in: `curl -u admin:admin -X POST "http://localhost:9000/api/users/change_password?login=admin&previousPassword=admin&password=NEW_PASSWORD"`
+-   if you change the password, make sure the update `-Dsonar.password=admin` when you run sonarqube next time
 
 ### Dependency vulnerability scan
 
@@ -105,46 +103,47 @@ open `dependency-check-report.html` from target to see the report.
     ./mvnw versions:display-plugin-updates
 
 ### Included Features/Samples
-- GraalVM native image generation
-- Modular application
-- Data JPA with User/Authority/Note/ReceivedFile entities, example of EntityGraph
-- Default test data created while running the app
-- Public and internal pages
-- MVC with thymeleaf templating
-- File upload/download
-- Live update of thymeleaf templates for local development
-- HTML fragments
-- webjar - bootstrap4 + jquery
-- Custom Error page
-- Request logger filter
-- Swagger API Docs with UI  ( http://localhost:8080/swagger-ui.html)
-- @RestControllerAdvice, @ControllerAdvice demo
-- CRUD Note + File upload
-- Spring / Maven profiles for dev/prod ...
-- Dockerfile to run images
-- Docker maven plugin to publish images (follow docker-steps.md)
-- Deploy to Amazon EC2 ( follow docker-steps.md )
-- Code Generation: lombok, mapstruct
-- H2 db for local, Console enabled for local ( http://localhost:8080/h2-console/, db url: jdbc:h2:mem:testdb, username:sa)
-- MySQL or any other SQL db can be configured for prod/docker etc profiles
-- User/User_Authority entity and repository/services
-    - login, logout, home pages based on user role
-- Security with basic config
-- Domain object Access security check on update/delete using custom PermissionEvaluator
-- public home page -- view all notes by all
-- private pages based on user roles
-- Test cases - unit/integration with JUnit 5, Mockito and Spring Test
-- Tests with Spock Framework (Groovy 3, Spock 2)
-- e2e with Selenide, fixtures. default data generated using Spring
-- Architecture test using ArchUnit
-- Email
-- Account management/Signup UI
+
+-   GraalVM native image generation
+-   Modular application
+-   Data JPA with User/Authority/Note/ReceivedFile entities, example of EntityGraph
+-   Default test data created while running the app
+-   Public and internal pages
+-   MVC with thymeleaf templating
+-   File upload/download
+-   Live update of thymeleaf templates for local development
+-   HTML fragments
+-   webjar - bootstrap4 + jquery
+-   Custom Error page
+-   Request logger filter
+-   Swagger API Docs with UI ( http://localhost:8080/swagger-ui.html)
+-   @RestControllerAdvice, @ControllerAdvice demo
+-   CRUD Note + File upload
+-   Spring / Maven profiles for dev/prod ...
+-   Dockerfile to run images
+-   Docker maven plugin to publish images (follow docker-steps.md)
+-   Deploy to Amazon EC2 ( follow docker-steps.md )
+-   Code Generation: lombok, mapstruct
+-   H2 db for local, Console enabled for local ( http://localhost:8080/h2-console/, db url: jdbc:h2:mem:testdb, username:sa)
+-   MySQL or any other SQL db can be configured for prod/docker etc profiles
+-   User/User_Authority entity and repository/services
+    -   login, logout, home pages based on user role
+-   Security with basic config
+-   Domain object Access security check on update/delete using custom PermissionEvaluator
+-   public home page -- view all notes by all
+-   private pages based on user roles
+-   Test cases - unit/integration with JUnit 5, Mockito and Spring Test
+-   Tests with Spock Framework (Groovy 3, Spock 2)
+-   e2e with Selenide, fixtures. default data generated using Spring
+-   Architecture test using ArchUnit
+-   Email
+-   Account management/Signup UI
 
 Future: do more stuff
 
-- background jobs with Quartz
-- Liquibase/Flyway change log
-- Integrate Markdown editor for writing notes
+-   background jobs with Quartz
+-   Liquibase/Flyway change log
+-   Integrate Markdown editor for writing notes
 
 ### Dependency/plugin version checker
 
@@ -152,33 +151,31 @@ Future: do more stuff
     `./mvnw versions:display-plugin-updates`
 
 ## Generate native executable:
-- Required: GraalVM 22.3+ (for Spring Boot 3) 
-- Install using sdkman 
+
+-   Required: GraalVM 22.3+ (for Spring Boot 3)
+-   Install using sdkman
     `sdk install java  22.3.r17.ea-nik`
     `sdk use java  22.3.r17.ea-nik`
 
-- Create native executable `./mvnw native:compile -Pnative,dev`
-- Run it   `./target/note-app`
+-   Create native executable `./mvnw native:compile -Pnative,dev`
+-   Run it `./target/note-app`
 
 OR
 
-- Generate docker image with native executable `./mvnw spring-boot:build-image -Pnative,dev`
-- Run it `docker run --rm -p 8080:8080 docker.io/library/note-app:3.0.0-RC1`
-
+-   Generate docker image with native executable `./mvnw spring-boot:build-image -Pnative,dev`
+-   Run it `docker run --rm -p 8080:8080 docker.io/library/note-app:3.0.0-RC1`
 
 ## Native Test:
-- Run with `./mvnw test -PnativeTest`
-- Spring Boot 3.0.0: native-test is not working due to spock ( and possibly other dependencies too) 
 
-
+-   Run with `./mvnw test -PnativeTest`
+-   Spring Boot 3.0.0: native-test is not working due to spock ( and possibly other dependencies too)
 
 # Results after enabling virtual thread
 
 ab -k -c 10 -n 2000 http://localhost:8080/
 
+Before
 
-
-Before 
 ```
 Connection Times (ms)
               min  mean[+/-sd] median   max
@@ -200,9 +197,9 @@ Percentage of the requests served within a certain time (ms)
 
 ```
 
-
 After
-``` 
+
+```
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.1      0       1
@@ -225,11 +222,9 @@ Percentage of the requests served within a certain time (ms)
 
 ```
 
-
 After introducing a delay to simulate slow blocking API and thousand concurrent requests. Its similar for less concurrent request. Virtual thread outperforms when we have too many concurrent requests.
 
-
-ab  -c 1000 -n 15000 http://localhost:8080/
+ab -c 1000 -n 15000 http://localhost:8080/
 
 ```java
 public class IndexController {
@@ -243,7 +238,7 @@ public class IndexController {
 
 before
 
-``` 
+```
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0   19 132.4      0    1030
@@ -266,10 +261,9 @@ Percentage of the requests served within a certain time (ms)
 
 after
 
-AMAZING  !!!
+AMAZING !!!
 
-
-``` 
+```
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
@@ -291,4 +285,3 @@ Percentage of the requests served within a certain time (ms)
 
 
 ```
- 
